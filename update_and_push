@@ -1,0 +1,2 @@
+#!/bin/bash
+date >ping && git commit -a -m "ping" && git push
