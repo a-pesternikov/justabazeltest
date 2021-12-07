@@ -1,0 +1,38 @@
+errorhereworkflows:
+  - name: bazel CI
+    hide_from_github: false
+    image: us.gcr.io/fasterci/bazelbuilder:cd990e6
+    on:
+      pull_request:
+        branches:
+          - master
+    steps:
+      - run: echo updated workflow!
+      - run: env
+      - run: echo all done!
+    #   - name: bazel build and test
+    #     bazel:
+    #       build_targets: 
+    #         - //...
+    #         - -//distribution/...
+    #         - -//go/experimental/...
+    #       test_targets: 
+    #         - //... 
+    #         - -//distribution/... 
+    #         - -//go/experimental/... 
+    #         - -//go/pkg/esloader/...
+    #   - name: post-build
+    #     run: echo all done!
+  - name: No-Op on pr into master
+    on:
+      pull_request:
+        branches:
+          - master
+  - name: No-Op on pr from release into master
+    on:
+      push:
+        branches:
+          - release/*
+      pull_request:
+        branches:
+          - master
