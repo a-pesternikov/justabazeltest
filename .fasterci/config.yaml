@@ -1,0 +1,14 @@
+# configure vscode yaml support https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
+# yaml-language-server: $schema=../reactfe/public/config.schema.json
+workflows:
+  - name: test CI
+    image: us.gcr.io/fasterci/bazelbuilder:d278ee1
+    on:
+      push:
+        branches:
+          - "master"
+      pull_request:
+        branches:
+          - master
+    steps:
+      - run: echo building building building...
